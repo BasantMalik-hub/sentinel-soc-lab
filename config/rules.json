@@ -1,0 +1,6 @@
+{
+  "auth_failure_threshold": 5,
+  "auth_window_seconds": 120,
+  "port_scan_threshold": 8,
+  "port_scan_window_seconds": 60
+}

