@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sentinel SOC Lab - Incident Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #f8fafc; margin: 2rem; }
+        h1 { color: #38bdf8; margin-bottom: 0.25rem; }
+        p { color: #94a3b8; margin-top: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; background: #1e293b; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; font-size: 13px; }
+        th { background: #0f172a; color: #94a3b8; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px; display: inline-block; }
+        .badge.critical { background: #dc2626; color: white; }
+        .badge.high { background: #ea580c; color: white; }
+        .badge.medium { background: #ca8a04; color: white; }
+        code { background: #334155; padding: 2px 6px; border-radius: 4px; color: #38bdf8; }
+    </style>
+</head>
+<body>
+    <h1>Sentinel SOC - Incident Detection Summary</h1>
+    <p>Pipeline run complete. Total alerts generated: <strong style="color: #38bdf8;">7</strong></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Severity</th><th>Rule ID</th><th>Rule Name</th><th>Timestamp</th>
+                <th>Affected Host</th><th>MITRE ATT&CK</th><th>Description</th><th>Analyst Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr class="medium">
+                <td><span class="badge medium">MEDIUM</span></td>
+                <td>SOC-003</td>
+                <td><strong>Horizontal Port Scanning Detected</strong></td>
+                <td>2026-10-29 10:00:12</td>
+                <td>192.168.1.50</td>
+                <td><code>T1046 - Network Service Discovery</code></td>
+                <td>Probing of 8 distinct ports observed from 45.33.32.156.</td>
+                <td>Check firewall drops; investigate potential reconnaissance host.</td>
+            </tr>
+        
+            <tr class="high">
+                <td><span class="badge high">HIGH</span></td>
+                <td>SOC-001</td>
+                <td><strong>Repeated Authentication Failures (Brute Force)</strong></td>
+                <td>2026-10-29 10:02:40</td>
+                <td>WIN-SRV01</td>
+                <td><code>T1110 - Brute Force</code></td>
+                <td>5 logon failures detected within time window.</td>
+                <td>Rate limit / block source IP; audit targeted user accounts.</td>
+            </tr>
+        
+            <tr class="high">
+                <td><span class="badge high">HIGH</span></td>
+                <td>SOC-002</td>
+                <td><strong>Successful Logon Post-Failure Spike (Account Compromise)</strong></td>
+                <td>2026-10-29 10:02:45</td>
+                <td>WIN-SRV01</td>
+                <td><code>T1110.001 - Password Guessing</code></td>
+                <td>Successful authentication observed immediately after repeated failures.</td>
+                <td>Force password reset for target user; terminate active sessions.</td>
+            </tr>
+        
+            <tr class="high">
+                <td><span class="badge high">HIGH</span></td>
+                <td>SOC-005</td>
+                <td><strong>Suspicious Encoded PowerShell Execution</strong></td>
+                <td>2026-10-29 10:03:15</td>
+                <td>WIN-SRV01</td>
+                <td><code>T1059.001 - PowerShell</code></td>
+                <td>PowerShell launched with base64 encoded command arguments.</td>
+                <td>Isolate host from network; decode command payload for forensic analysis.</td>
+            </tr>
+        
+            <tr class="high">
+                <td><span class="badge high">HIGH</span></td>
+                <td>SOC-004</td>
+                <td><strong>C2 Communication / Malicious IOC Hit</strong></td>
+                <td>2026-10-29 10:04:00</td>
+                <td>WIN-SRV01</td>
+                <td><code>T1071 - Application Layer Protocol</code></td>
+                <td>Observed network traffic with known malicious C2 indicator: 185.220.101.5</td>
+                <td>Block source/destination IP on perimeter firewall immediately.</td>
+            </tr>
+        
+            <tr class="high">
+                <td><span class="badge high">HIGH</span></td>
+                <td>SOC-006</td>
+                <td><strong>Privileged Group Modification</strong></td>
+                <td>2026-10-29 10:05:00</td>
+                <td>WIN-SRV01</td>
+                <td><code>T1098 - Account Manipulation</code></td>
+                <td>User account was added to local Administrators group.</td>
+                <td>Verify change authorization with system owner; revert membership if unauthorized.</td>
+            </tr>
+        
+            <tr class="critical">
+                <td><span class="badge critical">CRITICAL</span></td>
+                <td>SOC-007</td>
+                <td><strong>Security Audit Log Tampering</strong></td>
+                <td>2026-10-29 10:06:00</td>
+                <td>WIN-SRV01</td>
+                <td><code>T1070.001 - Clear Windows Event Logs</code></td>
+                <td>System log clearing command executed (wevtutil cl).</td>
+                <td>CRITICAL: Threat actor may be covering tracks. Triage host immediately.</td>
+            </tr>
+        
+        </tbody>
+    </table>
+</body>
+</html>
